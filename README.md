@@ -28,12 +28,18 @@ Cuando aparezca lo mismo que en la siguiente imagen se debe escribir la contrase
 
 - Crear usuario ---> `CREATE USER <<user>> IDENTIFIED BY <<password>> DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP PROFILE DEFAULT;`
 
-- Permisos de conexión ---> `GRANT CONNECT, RESOURCE TO <<user>>;`
+- Permisos de todo ---> `GRANT ALL PRIVILEGES TO <<user>>;`
 
 - Desbloquear cuenta ---> `ALTER USER <<user>> ACCOUNT UNLOCK;`
 
 - Ampliar cuota del usuario ---> `ALTER USER <<user>> QUOTA UNLIMITED ON USERS;`
 
+## Pasos para iniciar el servicio automáticamente
+
+- `sudo crontab -e`
+
+- Añadir la línea ---> `@reboot sudo systemctl restart oracle-xe-21c.service`
+
 ## Notas
 
-- Cada vez que se encienda el equipo se tiene que iniciar el servicio ---> `sudo /etc/init.d/oracle-xe-21c start`
+- Cuando se hace una consulta con muchas columnas estas se solapan por lo que hay que ejecutar lo siguiente cada vez que se entre en el SGBD ---> `SET linesize 32767;` `SET pagesize 50000;`
