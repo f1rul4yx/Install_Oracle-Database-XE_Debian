@@ -26,13 +26,9 @@ Cuando aparezca lo mismo que en la siguiente imagen se debe escribir la contrase
 
 ## Pasos para crear un usuario y asignar permisos
 
-- Crear usuario ---> `CREATE USER <<user>> IDENTIFIED BY <<password>> DEFAULT TABLESPACE USERS TEMPORARY TABLESPACE TEMP PROFILE DEFAULT;`
+- Crear usuario ---> `CREATE USER <<user>> IDENTIFIED BY <<password>>;`
 
 - Permisos de todo ---> `GRANT ALL PRIVILEGES TO <<user>>;`
-
-- Desbloquear cuenta ---> `ALTER USER <<user>> ACCOUNT UNLOCK;`
-
-- Ampliar cuota del usuario ---> `ALTER USER <<user>> QUOTA UNLIMITED ON USERS;`
 
 ## Pasos para iniciar el servicio automáticamente
 
