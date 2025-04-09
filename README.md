@@ -12,7 +12,6 @@ bash launch.sh
 
 Cuando aparezca lo mismo que en la siguiente imagen ten paciencia porque tarda más o menos 30 minutos.
 ![Imagen del proceso de conversión de .rpm a .deb](img/tutorial/deb-conversion_oracle.png)
-
 Cuando aparezca lo mismo que en la siguiente imagen se debe escribir la contraseña para el administrador de oracle.
 ![Imagen del apartado donde se indica la contraseña del usuario administrador de oracle](img/tutorial/password_oracle.png)
 
@@ -27,15 +26,26 @@ Cuando aparezca lo mismo que en la siguiente imagen se debe escribir la contrase
 ## Pasos para crear un usuario y asignar permisos
 
 - Crear usuario ---> `CREATE USER <<user>> IDENTIFIED BY <<password>>;`
-
 - Permisos de todo ---> `GRANT ALL PRIVILEGES TO <<user>>;`
 
 ## Pasos para iniciar el servicio automáticamente
 
 - `sudo crontab -e`
-
 - Añadir la línea ---> `@reboot sudo systemctl restart oracle-xe-21c.service`
 
-## Notas
+## Ejecución de configuración automática
 
-- Cuando se hace una consulta con muchas columnas estas se solapan por lo que hay que ejecutar lo siguiente cada vez que se entre en el SGBD ---> `SET linesize 32767;` `SET pagesize 50000;`
+- Hay algunas configuraciones que se deben de hacer cada vez que se inicia sesión por lo que una solución para evitar eso es crear un archivo `~/.login.sql` con una configuración como la siguiente:
+
+```
+-- Habilita la salida de mensajes desde procedimientos PL/SQL utilizando DBMS_OUTPUT.PUT_LINE
+SET SERVEROUTPUT ON
+
+-- Establece el ancho de línea para la salida en pantalla, útil para evitar que se divida la información en varias líneas
+SET LINESIZE 150
+
+-- Establece el número de líneas por página en la salida, para controlar la paginación al mostrar muchos registros
+SET PAGESIZE 100
+```
+
+- Para conseguir ejecutar este fichero es necesario indicarlo al iniciar la sesión `sqlplus <<usuario>>/<<contraseña>> @<<ruta_absoluta_.login.sql>>`
