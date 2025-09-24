@@ -21,6 +21,7 @@ Cuando aparezca lo mismo que en la siguiente imagen se debe escribir la contrase
 
 ## Configuración inicial para permitir la creación de usuarios en Oracle
 
+- `STARTUP;`
 - `ALTER SESSION SET "_ORACLE_SCRIPT"=true;`
 
 ## Pasos para crear un usuario y asignar permisos
