@@ -78,7 +78,7 @@ case "$respuesta_instalar" in
 	[Ss]*)
 		### Instalación de dependencias
 
-		sudo update
+		sudo apt update
 		sudo apt install alien rlwrap libaio1 unixodbc -y
 		sudo apt install wget -y
 
