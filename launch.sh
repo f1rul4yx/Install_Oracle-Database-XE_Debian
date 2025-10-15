@@ -84,14 +84,13 @@ case "$respuesta_instalar" in
 		### Instalación de dependencias
 
 		sudo apt update
-		sudo apt install alien rlwrap libaio1 unixodbc -y
+		sudo apt install rlwrap libaio1 unixodbc -y
 		sudo apt install wget -y
 
 
-		### Descarga del archivo .rpm y conversión a dpkg
+		### Descarga del archivo .deb
 
-		wget https://download.oracle.com/otn-pub/otn_software/db-express/oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm
-		sudo alien --scripts --to-deb oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm
+		wget https://files.diegovargas.es/deb/oracle-database-xe-21c_1.0-2_amd64.deb
 
 
 		### Instalación y configuración de oracle y configuración del hosts
