@@ -56,7 +56,7 @@ case "$respuesta_desinstalar" in
 		read
 
 		# 6. Eliminar bibliotecas y herramientas adicionales
-		sudo apt purge rlwrap libaio1 unixodbc -y
+		sudo apt purge rlwrap libaio1t64 libaio-dev unixodbc -y
 		sudo apt autoremove --purge -y
 
 		# 7. Verificar que todo esté desinstalado
@@ -79,8 +79,13 @@ case "$respuesta_instalar" in
 		### Instalación de dependencias
 
 		sudo apt update
-		sudo apt install rlwrap libaio1 unixodbc -y
+		sudo apt install rlwrap libaio1t64 libaio-dev unixodbc -y
 		sudo apt install wget -y
+
+
+		### Creación enlace simbólico antiguo libaio al nuevo para que Oracle lo lea
+
+		sudo ln -s /usr/lib/x86_64-linux-gnu/libaio.so.1t64 /usr/lib/x86_64-linux-gnu/libaio.so.1
 
 
 		### Descarga del archivo .deb
