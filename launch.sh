@@ -15,6 +15,11 @@ cian="\033[36m"
 blanco="\033[37m"
 reset="\033[0m"
 
+if [[ "$EUID" -ne 0 ]]; then
+  echo -e "${rojo}[-] Este script se debe ejecutar con permisos de root!${reset}"
+  exit 1
+fi
+
 clear
 echo -en "[${verde}+${reset}] ¿Quieres desinstalar Oracle? (s/n): "
 read respuesta_desinstalar
