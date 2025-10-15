@@ -61,7 +61,7 @@ case "$respuesta_desinstalar" in
 		read
 
 		# 6. Eliminar bibliotecas y herramientas adicionales
-		sudo apt purge alien rlwrap libaio1 unixodbc -y
+		sudo apt purge rlwrap libaio1 unixodbc -y
 		sudo apt autoremove --purge -y
 
 		# 7. Verificar que todo esté desinstalado
